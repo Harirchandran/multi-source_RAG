@@ -1,0 +1,10 @@
+[
+  {
+    "question": "What is LangChain?",
+    "expected_answer": "framework for building LLM applications"
+  },
+  {
+    "question": "What are agents in LangChain?",
+    "expected_answer": "systems that use LLMs to decide actions"
+  }
+]
