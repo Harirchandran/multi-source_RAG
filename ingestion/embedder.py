@@ -2,7 +2,14 @@
 
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_openai import OpenAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
+
+def get_huggingface_embeddings(model_name="nomic-ai/nomic-embed-text-v1"):
+    """
+    Cloud embedding model (runs completely free inside Python without Ollama dependencies)
+    """
+    return HuggingFaceEmbeddings(model_name=model_name)
 
 def get_ollama_embeddings(model_name="nomic-embed-text"):
     """

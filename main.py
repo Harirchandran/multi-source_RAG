@@ -2,7 +2,7 @@
 
 from ingestion.loader import load_documents
 from ingestion.splitter import split_documents
-from ingestion.embedder import get_ollama_embeddings
+from ingestion.embedder import get_ollama_embeddings, get_huggingface_embeddings
 from retrieval.vector_store import (
     create_vector_store,
     save_vector_store,
@@ -60,7 +60,8 @@ def add_source_to_index(source_path, source_type, source_name=None):
     if not chunks:
         raise ValueError(f"Could not extract any readable text from '{source_name}'. If it is a PDF, it might be an image-only document.")
 
-    embedding_model = get_ollama_embeddings()
+    # embedding_model = get_ollama_embeddings()
+    embedding_model = get_huggingface_embeddings()
 
     if os.path.exists(INDEX_PATH):
         vectorstore = load_vector_store(embedding_model, INDEX_PATH)
@@ -114,7 +115,8 @@ def load_or_create_index():
     Load existing index or create new one
     """
 
-    embedding_model = get_ollama_embeddings()
+    # embedding_model = get_ollama_embeddings()
+    embedding_model = get_huggingface_embeddings()
 
     if os.path.exists(INDEX_PATH):
         print("Loading existing index...")
